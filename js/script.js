@@ -136,11 +136,9 @@
   }
 
   function updateList(d) {
-    document.querySelector('#top0').innerHTML = `${d[0].name} . . . . ${d[0].points}`;
-    document.querySelector('#top1').innerHTML = `${d[1].name} . . . . ${d[1].points}`;
-    document.querySelector('#top2').innerHTML = `${d[2].name} . . . . ${d[2].points}`;
-    document.querySelector('#top3').innerHTML = `${d[3].name} . . . . ${d[3].points}`;
-    document.querySelector('#top4').innerHTML = `${d[4].name} . . . . ${d[4].points}`;
+    for (let i = 0; i < 5; i++) {
+      document.querySelector(`#top${i}`).innerHTML = `${d[i].name} . . . . ${d[i].points}`;
+    }
   }
 
   function showList(url) {
@@ -169,4 +167,3 @@
     }
   }
 })();
-
