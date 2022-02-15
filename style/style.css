@@ -1,0 +1,23 @@
+* {
+  background-color: rgb(45, 45, 45);
+  color: white;
+  font-size: x-large;
+}
+#userName {
+  text-align: center;
+}
+div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 6rem;
+}
+input {
+  width: 100%;
+  min-height: 100vh;
+  text-align: center;
+  border: none;
+}
+.high-score-div {
+  border: 1px dotted;
+}
