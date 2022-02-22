@@ -4,8 +4,17 @@
   const userName = document.querySelector('#user-name');
   const newUsr = document.querySelector('#new-usr')
   const gameWarper = document.querySelector('#game-warper');
+  const rockBtn = document.querySelector('#rock-btn');
+  const scissorBtn = document.querySelector('#scissor-btn');
+  const paperBtn = document.querySelector('#paper-btn');
+  const userChoice = document.querySelector('#user-choice');
+  const pcChoice = document.querySelector('#pc-choice');
+  const userPointsText = document.querySelector('#user-points');
+  const highScoreUrl = 'https://produkter-e725b-default-rtdb.europe-west1.firebasedatabase.app/.json';
+  let userPoints = points();
   gameWarper.style.display = 'none';
 
+  
   input.addEventListener('keyup', function (event) {
     if (event.key === 'Enter') {
       userName.innerText = `Hello - ${input.value} - lets start playing ! ` + "\n\n\n\n" + 'choose:';
@@ -15,16 +24,6 @@
     }
   })
 
-
-  const rockBtn = document.querySelector('#rock-btn');
-  const scissorBtn = document.querySelector('#scissor-btn');
-  const paperBtn = document.querySelector('#paper-btn');
-  const userChoice = document.querySelector('#user-choice');
-  const pcChoice = document.querySelector('#pc-choice');
-  const userPointsText = document.querySelector('#user-points');
-  const highScoreUrl = 'https://produkter-e725b-default-rtdb.europe-west1.firebasedatabase.app/.json';
-
-  let userPoints = points();
 
   rockBtn.addEventListener('click', function () {
     const datorVal = Math.round(Math.random() * 3);
@@ -43,6 +42,7 @@
     }
   });
 
+  
   scissorBtn.addEventListener('click', function () {
     let datorVal = Math.round(Math.random() * 3);
     userChoice.innerText = `${input.value} chose :Scissors`;
@@ -58,9 +58,9 @@
       userPoints.addPoint();
       userPointsText.innerText = `Your points: ${userPoints.show()}`;
     }
-
   });
 
+  
   paperBtn.addEventListener('click', function () {
     userChoice.innerText = `${input.value} chose :Paper`;
     const datorVal = Math.round(Math.random() * 3);
@@ -80,6 +80,8 @@
 
   newUsr.addEventListener('click', () => location.reload(true));
 
+  
+  
 
   function loose(points) {
     const user = {
