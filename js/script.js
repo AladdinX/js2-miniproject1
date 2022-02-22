@@ -14,6 +14,7 @@
   let userPoints = points();
   gameWarper.style.display = 'none';
 
+
   
   input.addEventListener('keyup', function (event) {
     if (event.key === 'Enter') {
