@@ -22,6 +22,7 @@
   const userChoice = document.querySelector('#user-choice');
   const pcChoice = document.querySelector('#pc-choice');
   const userPointsText = document.querySelector('#user-points');
+  const highScoreUrl = 'https://produkter-e725b-default-rtdb.europe-west1.firebasedatabase.app/.json';
 
   let userPoints = points();
 
@@ -40,7 +41,6 @@
       pcChoice.innerText = ("Pc chose :Paper");
       loose(userPoints.show());
     }
-
   });
 
   scissorBtn.addEventListener('click', function () {
@@ -62,7 +62,6 @@
   });
 
   paperBtn.addEventListener('click', function () {
-
     userChoice.innerText = `${input.value} chose :Paper`;
     const datorVal = Math.round(Math.random() * 3);
     if (datorVal === 0) {
@@ -81,7 +80,6 @@
 
   newUsr.addEventListener('click', () => location.reload(true));
 
-  const highScoreUrl = 'https://produkter-e725b-default-rtdb.europe-west1.firebasedatabase.app/.json';
 
   function loose(points) {
     const user = {
@@ -89,10 +87,8 @@
       points: points
     }
     getScore(highScoreUrl, user);
-
     userPoints.reset();
     userPointsText.innerText = `Your points : ${userPoints.show()}`;
-
   }
 
 
@@ -104,6 +100,7 @@
       });
   }
 
+  
   function compare(data, userPoints) {
     for (let i = 0; i < 5; i++) {
       if (data[i] != null) {
@@ -127,6 +124,7 @@
     }
   }
 
+  
   function addToDB(url, highScore) {
     fetch(url, {
       method: 'PUT',
@@ -135,12 +133,14 @@
     }).then(r => r.json()).then(d => console.log('update'));
   }
 
+  
   function updateList(d) {
     for (let i = 0; i < 5; i++) {
       document.querySelector(`#top${i}`).innerHTML = `${d[i].name} . . . . ${d[i].points}`;
     }
   }
 
+  
   function showList(url) {
     fetch(url)
       .then(r => r.json())
@@ -149,6 +149,7 @@
       });
   }
 
+  
   function points() {
     let points = 0;
     function addPoint() {
